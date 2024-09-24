@@ -1,0 +1,28 @@
+---
+title: "r-digital-tool-exercise"
+format: html
+editor: visual
+---
+
+## Digital Tool Exercise
+
+```{r}
+library(ggplot2)
+trade_data = read.csv('historical_trade_data.csv')
+head(trade_data)
+```
+
+```{r}
+large_exports = trade_data[trade_data$Exports > 200000,]
+large_exports$TradeBalance = large_exports$Exports - large_exports$Imports
+large_exports
+```
+
+```{r}
+ggplot(large_exports, aes(x = Year, y = TradeBalance)) +
+  geom_line() +
+  theme_minimal() +
+  labs(title = "Trade Balance Over Time",
+       x = "Year",
+       y = "Trade Balance")
+```
