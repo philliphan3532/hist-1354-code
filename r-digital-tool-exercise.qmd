@@ -19,10 +19,12 @@ large_exports
 ```
 
 ```{r}
-ggplot(large_exports, aes(x = Year, y = TradeBalance)) +
+p <- ggplot(large_exports, aes(x = Year, y = TradeBalance)) +
   geom_line() +
   theme_minimal() +
   labs(title = "Trade Balance Over Time",
        x = "Year",
        y = "Trade Balance")
+
+ggsave(filename="trade-plot.jpg", plot=p)
 ```
